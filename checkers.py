@@ -149,11 +149,11 @@ def computer():
     for i in range(0,64,2):
         if board[i]==1:
             if takepiece(i, i+9):
-                #print("BORK!")
+                print("BORK!")
                 switch_user()
                 return True
             if takepiece(i, i+7):
-                #print("BORK!")
+                print("BORK!")
                 switch_user()
                 return True
             #print("\n\nadsfasdfasdfasdf\n\n")
