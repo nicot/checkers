@@ -144,6 +144,10 @@ def turn():
             board[i]=0
 
 # Makes the computer take a piece. If it can't, it makes a random valid move.
+# I will implement "don't move if it would take a piece" this could be
+# hard because i was a bad programmer and made functions do things
+# outside their scope kinda. I have to go back and fix it now.
+# 
 def computer():
     #take a piece if we can
     for i in range(0,64):
@@ -165,17 +169,27 @@ def computer():
     # otherwise make a random valid move. Actually its not random. Its moving the furthest right and up piece
     # thats valid first. I have no idea if this is a good strategy.
     #print("no computer moves to take player pieces\nMaking a silly move.")
-    for i in range(0,64,2):
+    for i in range(0,64):
         if board[i]==1:
             if valid(i, i+9):
-                #print("good")
-                switch_user()
+                if goodmove(i+9):
+                    #print("good")
+                    switch_user()
                 return True
             if valid(i, i+7):
-                #print("good")
-                switch_user()
+                if goodmove(i+9):
+                    #print("good")
+                    switch_user()
                 return True
 
+def goodmove(piece):
+    if board[piece+9]==2 and board[piece-9]==0:
+        return false
+    elif board[piece+7]==2 and board[piece-7]==0:
+        return false
+    else:
+        return True
+        
 print("Welcome to a new game of checkers. Good luck!\n")
 new_board()
 set_pieces()
