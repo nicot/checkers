@@ -146,7 +146,7 @@ def turn():
 # Makes the computer take a piece. If it can't, it makes a random valid move.
 def computer():
     #take a piece if we can
-    for i in range(0,64,2):
+    for i in range(0,64):
         if board[i]==1:
             if takepiece(i, i+9):
                 print("BORK!")
